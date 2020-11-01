@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
-// run 1 - test commit to run pipeline
+// run 2 - CI & CD - test commit to run pipeline
 function Home() {
     
     
