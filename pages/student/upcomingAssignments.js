@@ -1,8 +1,21 @@
 import React from 'react';
 import { FiBell } from 'react-icons/fi'
 import { FiLock } from 'react-icons/fi'
+import {STUDENT_UPCOMING_ASSIGNMENT} from './ConstFile';
+import {useState, useEffect} from 'react'
+import {getInfo} from '../../services/GenericServices';
 
 function upcomingAssignments() {
+    const [assignmentList, setAssignmentList] = useState([]);
+
+    useEffect(() => {
+        getInfo(STUDENT_UPCOMING_ASSIGNMENT).then((data) => {
+            //console.log('bloom data is : ',data);
+            setAssignmentList(data);
+        })
+    }, [])
+    
+    //console.log("assignmentList : ",assignmentList);
     return (
         <div className="">
             <div className="card user-list">
@@ -26,7 +39,19 @@ function upcomingAssignments() {
                     <div className="stuasshead">
                         <div className="">Assignment <span className="float-right">Due Date</span></div>
                     </div>
-                    <div className="stuasstxt">
+                    {
+                        assignmentList.map((upcomingAssignment) => (
+                            <div className="stuasstxt">
+                                <a href="Stu_energy_assignment">
+                                    <div className="" style={{ color: "#20cbcf" }}>{upcomingAssignment.name} 
+                                        <span className="float-right">{upcomingAssignment.dueDate}</span>
+                                    </div>
+                                </a>
+                            </div>
+                        ))
+                    }
+                    {/* Commented for future purpose */}
+                    {/* <div className="stuasstxt">
                         <a href="Stu_energy_assignment"><div className="" style={{ color: "#20cbcf" }}>Use Of Energy Assessment <span className="float-right">10th Sep 2020</span></div></a>
                     </div>
                     <div className="stuasstxt">
@@ -40,8 +65,7 @@ function upcomingAssignments() {
                     </div>
                     <div className="stuasstxt">
                         <div className="">Science Rock <span className="float-right">10th Jan 2021</span></div>
-                    </div>
-
+                    </div> */}
                 </div>
             </div>
         </div>
