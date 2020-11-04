@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 //import { FiLock } from 'react-icons/fi';
 import { useState, useEffect } from 'react';
 import {getInfo} from '../../services/GenericServices';
-import {TOP_PICK_URL} from './ConstFile';
+import {TOP_PICK_URL} from '../../components/ConstFile';
 
 export default function resourceTopPick () {
 

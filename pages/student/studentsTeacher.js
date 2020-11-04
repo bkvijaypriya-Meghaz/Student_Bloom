@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FiLock } from 'react-icons/fi';
-import {MY_TEACHER_INFO} from './ConstFile';
+import {MY_TEACHER_INFO} from '../../components/ConstFile';
 import {useState, useEffect} from 'react'
 import {getInfo} from '../../services/GenericServices';
 

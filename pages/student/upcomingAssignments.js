@@ -1,7 +1,7 @@
 import React from 'react';
 import { FiBell } from 'react-icons/fi'
 import { FiLock } from 'react-icons/fi'
-import {STUDENT_UPCOMING_ASSIGNMENT} from './ConstFile';
+import {STUDENT_UPCOMING_ASSIGNMENT} from '../../components/ConstFile';
 import {useState, useEffect} from 'react'
 import {getInfo} from '../../services/GenericServices';
 

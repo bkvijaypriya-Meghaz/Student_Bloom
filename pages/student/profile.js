@@ -4,7 +4,7 @@ import { FiLock } from 'react-icons/fi'
 import { useState, useEffect } from 'react';
 import {getInfo} from '../../services/GenericServices';
 //import * as myConstClass from './ConstFile';
-import {STUDENT_PROFILE_URL} from './ConstFile';
+import {STUDENT_PROFILE_URL} from '../../components/ConstFile';
 
 function profile() {
 
