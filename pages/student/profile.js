@@ -1,8 +1,30 @@
 import React from 'react';
-import { FiBell } from 'react-icons/fi'
+import { FiBell, FiPrinter } from 'react-icons/fi'
 import { FiLock } from 'react-icons/fi'
+import { useState, useEffect } from 'react';
+import {getInfo} from '../../services/GenericServices';
+//import * as myConstClass from './ConstFile';
+import {STUDENT_PROFILE_URL} from './ConstFile';
 
 function profile() {
+
+    const [studentList, setStudentList] = useState(0);
+
+    //const studentProfile = myConstClass.studentProfile;
+
+    useEffect(() => {
+        getInfo(STUDENT_PROFILE_URL).then((data) => {
+            console.log('bloom data is : ',data);
+            console.log('bloom data is : ',data.lastName);
+            console.log('bloom data is : ',data.firstName);
+           
+            setStudentList(data);
+        })
+    }, [])
+
+    
+    //console.log("studentList : ",studentList);
+
     return (
         <div className="profileuser">
         <div className="card loction-user">
@@ -13,8 +35,8 @@ function profile() {
                     </div>
                     <div className="col">
                         <h6 className="stuprowelback">Welcome Back,</h6>
-                        <h5>Ann Doe</h5>
-                        <span className="stugrade">4th Grade</span>
+                        <h5>{studentList.lastName} {studentList.firstName}</h5>
+                        <span className="stugrade">{studentList.section}</span>
                     </div>
                 </div>
     

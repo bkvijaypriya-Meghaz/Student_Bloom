@@ -34,9 +34,9 @@ export default function dashboard(props) {
                                 </div>
 
                                 <div class="col-xl-3 col-md-3 col-sm-12 col-xs-12">
-                                <StudentsTeacher />
-                                <ResourceTopPick />
-                                <Studentquicklaunch/>
+                                    <StudentsTeacher />
+                                    <ResourceTopPick />
+                                    <Studentquicklaunch/>
                                 </div>
                             </div>
                     </div>
