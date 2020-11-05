@@ -28,9 +28,9 @@ export default function resourceTopPick () {
                 top_pick.map((topPickResource) => (
                     <div className="card-block stuprofile_card">
                         <div className="stuprovideo">
-                            <iframe width="100%" height="200" src={top_pick.resource} allowfullscreen></iframe>
+                            <iframe width="100%" height="200" src={topPickResource.resource} allowfullscreen></iframe>
                         </div>
-                        <div className="videotxt">{top_pick.name}</div>
+                        <div className="videotxt">{topPickResource.name}</div>
                         <div className="videosmalltxt">Video</div>
                     </div>
                 ))
