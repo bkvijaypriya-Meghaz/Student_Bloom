@@ -1,20 +1,33 @@
 import React, {Component} from 'react'
 // import StudentLayout from '../../layout/StudentLayout';
 import {FiLock} from 'react-icons/fi'
+import { useState, useEffect } from 'react';
+import {getInfo} from '../../services/GenericServices';
+import {GRADE_INFORMATION} from '../../components/ConstFile';
 
-class StudentAssignments extends Component {
 
-    render() {
-        return (
-
-            <div>
+export default function StudentAssignments() {
+    const [studentAssignments, setStudentAssignments] = useState(0);
+    const [assignmentList, setAssignmentList] = useState([]);
+    useEffect(() => {
+        getInfo(GRADE_INFORMATION).then((data) => {
+            // console.log('bloom data is : ',data);
+            // console.log('first name is : ',data.firstName);
+            // console.log('last name is : ',data.lastName);
+           
+            setStudentAssignments(data);
+            setAssignmentList(data.assignments);
+        })
+    }, [])
+     return (
+        <div>
             <div className="">
                 <div className="card">
                     <div className="card-header">
-                        <h5>Ms. Jane Doe's 4th Grade Science className</h5>
+                        <h5>Ms. {studentAssignments.lastName} {studentAssignments.firstName} 's {studentAssignments.section}</h5>
                     </div>
                     <div className="card-block stuprofile_card scrollpart">
-{/*                         if(this.props.assign=='Yes') {
+                    {/* if(this.props.assign=='Yes') {
                             <>
                             <div className="card cardshadow">
                                 <div className="card-block stuprofile_card">
@@ -51,23 +64,32 @@ class StudentAssignments extends Component {
                             </div>
                             </>
                         } */}
-                        <div className="card cardshadow">
-                            <div className="card-block stuprofile_card">
-                                <div className="row">
-                                    <div className="col-xl-3">
-                                        <div className="postpercent"><div data-label="0% completed" className="radial-bar radial-bar-0 radial-bar-lg m-b-0"></div></div>
-                                    </div>
-                                    <div className="col-xl-9">
-                                        <div className="posttitle">New Photosynthesis Assignment</div>
-                                        <div className="postdesc">Assignment Assigned on : 10th July 2020</div>
-                                        <div className="duedatebtn"><button type="button" className="btn btn-primary btn-sm">Due Date : 20th Nov 2020</button></div>
+                        {
+                            assignmentList.map((assignment)=>(
+                            <div className="card cardshadow">
+                                <div className="card-block stuprofile_card">
+                                    <div className="row">
+                                        <div className="col-xl-3">
+                                            <div className="postpercent">
+                                                <div data-label="100% completed" className="radial-bar radial-bar-100 radial-bar-lg m-b-0"></div></div>
+                                        </div>
+                                        <div className="col-xl-9">
+                                            <div className="posttitle">{assignment.name}</div>
+                                            <div className="postdesc">Assignment Assigned on : {assignment.assignDate}</div>
+                                            <div className="duedatebtn">
+                                                <button type="button" className="btn btn-primary btn-sm">
+                                                    Due Date : {assignment.dueDate}
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                
                             </div>
-                        </div>
-                        
-                        <div className="card cardshadow">
+                            ))
+                        }
+
+                        {/* Sample code what we got from bloom legacy - as there was some chart implementation and not the thumbnail */}
+                        {/* <div className="card cardshadow">
                             <div className="card-block stuprofile_card">
                                 <div className="row">
                                     <div className="col-xl-3">
@@ -82,87 +104,11 @@ class StudentAssignments extends Component {
                                 
                             </div>
                         </div>
-                        <div className="card cardshadow">
-                            <div className="card-block stuprofile_card">
-                                <div className="row">
-                                    <div className="col-xl-3">
-                                        <div className="postpercent"><div data-label="0% completed" className="radial-bar radial-bar-0 radial-bar-lg m-b-0"></div></div>
-                                    </div>
-                                    <div className="col-xl-9">
-                                        <div className="row">
-                                            <div className="col-xl-10 col-md-10 col-sm-10 col-xs-10">
-                                                <div className="posttitle">Writing Science</div>
-                                            </div>
-                                            <div className="col-xl-2 col-md-2 col-sm-2 col-xs-2">
-                                                <div className="studashlock">
-                                                    <i className="feather"><FiLock/></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div className="postdesc">Assignment Assigned on : 10th Jan 2021</div>
-                                        <div className="duedatebtn"><button type="button" className="btn btn-primary btn-sm">Due Date : 15th Mar 2021</button></div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <div className="card cardshadow">
-                            <div className="card-block stuprofile_card">
-                                <div className="row">
-                                    <div className="col-xl-3">
-                                        <div className="postpercent"><div data-label="0% completed" className="radial-bar radial-bar-0 radial-bar-lg m-b-0"></div></div>
-                                    </div>
-                                    <div className="col-xl-9">
-                                        <div className="row">
-                                            <div className="col-xl-10 col-md-10 col-sm-10 col-xs-10">
-                                                <div className="posttitle">Claim Evidence Reasoning</div>
-                                            </div>
-                                            <div className="col-xl-2 col-md-2 col-sm-2 col-xs-2">
-                                                <div className="studashlock">
-                                                    <i className="feather"><FiLock/></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div className="postdesc">Assignment Assigned on : 20th Apr 2021</div>
-                                        <div className="duedatebtn"><button type="button" className="btn btn-primary btn-sm">Due Date : 25th July 2021</button></div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <div className="card cardshadow">
-                            <div className="card-block stuprofile_card">
-                                <div className="row">
-                                    <div className="col-xl-3">
-                                        <div className="postpercent"><div data-label="0% completed" className="radial-bar radial-bar-0 radial-bar-lg m-b-0"></div></div>
-                                    </div>
-                                    <div className="col-xl-9">
-                                        <div className="row">
-                                            <div className="col-xl-10 col-md-10 col-sm-10 col-xs-10">
-                                                <div className="posttitle">Science Rock</div>
-                                            </div>
-                                            <div className="col-xl-2 col-md-2 col-sm-2 col-xs-2">
-                                                <div className="studashlock">
-                                                    <i className="feather"><FiLock/></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div className="postdesc">Assignment Assigned on : 7th Aug 2021</div>
-                                        <div className="duedatebtn"><button type="button" className="btn btn-primary btn-sm">Due Date : 25th Nov 2021</button></div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+
+                       */}
+                    </div> 
                 </div>
             </div>
         </div>
-        );
-    }
+    )
 }
-
-export default StudentAssignments;
