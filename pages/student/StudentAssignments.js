@@ -3,14 +3,14 @@ import React, {Component} from 'react'
 import {FiLock} from 'react-icons/fi'
 import { useState, useEffect } from 'react';
 import {getInfo} from '../../services/GenericServices';
-import {GRADE_INFORMATION} from '../../components/ConstFile';
+import {ASSIGNMENT_INFORMATION} from '../../components/ConstFile';
 
 
 export default function StudentAssignments() {
     const [studentAssignments, setStudentAssignments] = useState(0);
     const [assignmentList, setAssignmentList] = useState([]);
     useEffect(() => {
-        getInfo(GRADE_INFORMATION).then((data) => {
+        getInfo(ASSIGNMENT_INFORMATION).then((data) => {
             // console.log('bloom data is : ',data);
             // console.log('first name is : ',data.firstName);
             // console.log('last name is : ',data.lastName);
