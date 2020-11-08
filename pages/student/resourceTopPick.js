@@ -17,7 +17,6 @@ export default function resourceTopPick () {
             setTopPick(data);
         })
     }, [])
-
     return(
         <div className="">
         <div className="card">
@@ -28,7 +27,10 @@ export default function resourceTopPick () {
                 top_pick.map((topPickResource) => (
                     <div className="card-block stuprofile_card">
                         <div className="stuprovideo">
-                            <iframe width="100%" height="200" src={topPickResource.resource} allowfullscreen></iframe>
+                            {/* <iframe width="100%" height="200" src="https://www.youtube.com/embed/BcIDRet787k" allowfullscreen></iframe> */}
+                            {/* <iframe width="100%" height="200" src={topPickResource.resource} allowfullscreen></iframe> */}
+                            {/* Todo : Have to figure it out to display the url along with embed and the last value after equal to symbol. */}
+                            <iframe width="100%" height="200" src="https://www.youtube.com/embed/vN9aR2wKv0U" allowfullscreen></iframe>
                         </div>
                         <div className="videotxt">{topPickResource.name}</div>
                         <div className="videosmalltxt">Video</div>

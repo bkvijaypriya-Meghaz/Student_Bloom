@@ -13,7 +13,9 @@ export default function studentsTeacher() {
             // console.log('bloom data is : ',data);
             // console.log('bloom data is : ',data.lastName);
             // console.log('bloom data is : ',data.firstName);
+            
             setMyTeacherInfo(data);
+
         })
     }, [])
 
@@ -26,7 +28,9 @@ export default function studentsTeacher() {
                 <div className="card-block stuprofile_card">
                     <div className="teacherimg"> 
                         <span data-toggle="tooltip" data-html="true" data-placement="bottom" title="Ms. Jane Doe">
-                                {myTeacherInfo.lastName}{myTeacherInfo.firstName}
+                                {/* {myTeacherInfo.lastName}{myTeacherInfo.firstName} */}
+                                {/* Todo : API error - Resource not found and so hardcoding the value for demo */}
+                                Anna Martin
                         </span>
                     </div>
                 </div>

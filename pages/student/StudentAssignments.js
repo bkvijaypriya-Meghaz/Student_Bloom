@@ -8,17 +8,29 @@ import {ASSIGNMENT_INFORMATION} from '../../components/ConstFile';
 
 export default function StudentAssignments() {
     const [studentAssignments, setStudentAssignments] = useState(0);
+    const [progressList, setProgressList] = useState([]);
     const [assignmentList, setAssignmentList] = useState([]);
     useEffect(() => {
         getInfo(ASSIGNMENT_INFORMATION).then((data) => {
-            // console.log('bloom data is : ',data);
+             console.log('data is in StudentAssignments : ',data);
             // console.log('first name is : ',data.firstName);
             // console.log('last name is : ',data.lastName);
            
+            let progress = [];
             setStudentAssignments(data);
+            data.assignments.map((assignmentItem,i)=>(
+                progress[i] = "radial-bar radial-bar-"+assignmentItem.progress+" radial-bar-lg m-b-0"
+            ))
+            setProgressList(progress);
+
+            data.assignments.map((assignmentItem)=>(
+                assignmentItem.progress = assignmentItem.progress+"% Completed"
+            ))
             setAssignmentList(data.assignments);
         })
     }, [])
+
+    //console.log("progressList  =========== > ",progressList);
      return (
         <div>
             <div className="">
@@ -65,13 +77,13 @@ export default function StudentAssignments() {
                             </>
                         } */}
                         {
-                            assignmentList.map((assignment)=>(
+                            assignmentList.map((assignment,i)=>(
                             <div className="card cardshadow">
                                 <div className="card-block stuprofile_card">
                                     <div className="row">
                                         <div className="col-xl-3">
                                             <div className="postpercent">
-                                                <div data-label="100% completed" className="radial-bar radial-bar-100 radial-bar-lg m-b-0"></div></div>
+                                                <div data-label={assignment.progress} className={progressList[i]}></div></div>
                                         </div>
                                         <div className="col-xl-9">
                                             <div className="posttitle">{assignment.name}</div>
