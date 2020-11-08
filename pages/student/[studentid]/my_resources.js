@@ -1,5 +1,5 @@
 import React from 'react';
-import StudentLayout from '../../../layout/StudentLayout';
+//import StudentLayout from '../../../layout/StudentLayout';
 import Header from './header';
 import Footer from '../footer';
 function my_resources(props)
